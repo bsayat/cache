@@ -25,7 +25,7 @@ func (c *Cache) Set(key string, value interface{}) {
 	c.store[key] = value
 }
 
-func (c *Cache) Get(key string, value interface{}) interface{} {
+func (c *Cache) Get(key string) interface{} {
 	return c.store[key]
 }
 
