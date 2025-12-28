@@ -5,7 +5,7 @@ import (
 )
 
 type Cache struct {
-	store map[string]any
+	store map[string]interface{}
 }
 
 var (
@@ -15,17 +15,17 @@ var (
 
 func New() *Cache {
 	once.Do(func() {
-		instance = &Cache{store: make(map[string]any)}
+		instance = &Cache{store: make(map[string]interface{})}
 	})
 
 	return instance
 }
 
-func (c *Cache) Set(key string, value any) {
+func (c *Cache) Set(key string, value interface{}) {
 	c.store[key] = value
 }
 
-func (c *Cache) Get(key string, value any) any {
+func (c *Cache) Get(key string, value interface{}) interface{} {
 	return c.store[key]
 }
 

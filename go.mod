@@ -1,3 +1,1 @@
-module hw_1
-
-go 1.25.4
+module github.com/bsayat/cache
