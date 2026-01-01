@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"errors"
 	"sync"
 )
 
@@ -25,8 +26,14 @@ func (c *Cache) Set(key string, value interface{}) {
 	c.store[key] = value
 }
 
-func (c *Cache) Get(key string) interface{} {
-	return c.store[key]
+func (c *Cache) Get(key string) (interface{}, error) {
+	value, ok := c.store[key]
+
+	if !ok {
+		return nil, errors.New("key not found")
+	}
+
+	return value, nil
 }
 
 func (c *Cache) Delete(key string) {
